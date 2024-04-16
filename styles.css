@@ -1,3 +1,12 @@
+.weather-table {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+}
+.weather-table td {
+    padding: 10px;
+}
 /* html,
 body {
     height: 100%;
@@ -26,4 +35,4 @@ body {
     height: 36px;
     top: 7px;
     right: 12px;
-} */ */
+} */

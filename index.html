@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
 
-        <!-- Stylesheet -->
-        <link href="styles.css" rel="stylesheet" />
+    <!-- Stylesheet -->
+    <link href="styles.css" rel="stylesheet" />
 
 </head>
-<body>
-<div>   
-<header class="App-header">
-        <div id="search"><input placeholder="search zip code"><button>Search</button></div><span>
-            <p id="greeting">Enter a zip code to receive a forecast detailing weather.</p>
-        </span>
-        <h1 class="City-name"></h1>
-    </header>
 
-    <video id="Greeting-video" src="./static/2975799-hd_1920_1080_30fps.mp4" autoplay="" loop=""></video>
+<body>
+    <div>
+        <header class="App-header">
+            <div id="search">
+                <input placeholder="search zip code" id="search-input"><button id="search-btn">Search</button>
+            </div><span>
+                <p id="greeting">Enter a zip code to receive a forecast detailing weather.</p>
+            </span>
+        </header>
+        <div id="data-table"></div>
+
+        <!--<video id="Greeting-video" src="./static/2975799-hd_1920_1080_30fps.mp4" autoplay="" loop=""></video> -->
     </div>
-<!-- The form -->
-<!-- <div id="top-box" style="max-width: 1600px;">
+    <!-- The form -->
+    <!-- <div id="top-box" style="max-width: 1600px;">
     <input type="text" placeholder="Search zip code" name="search">
     <button class="submit" id="submit-btn" type="submit">SUBMIT<i class="fa fa-search"></i></button>
 </form>
 <p> Enter a zip code to recieve the forcast weather in that area.</p>
 
 </div> -->
-        
 
-        <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
