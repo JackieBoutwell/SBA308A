@@ -11,15 +11,16 @@ const currentConditions = async (zipCode) => {
     const response = await fetch(
       `http://dataservice.accuweather.com/locations/v1/postalcodes/search?apikey=A0eLxjDMQC919yA8VukwvzicrL5uZqGk&q=${zipCode}`
     );
-    const data = await response.json();
+      const data = await response.json();
     const locationKey = data[0].ParentCity.Key;
 
     const fiveDayForecastResponse = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=A0eLxjDMQC919yA8VukwvzicrL5uZqGk`);
     const fiveDayForecast = await fiveDayForecastResponse.json();
       
     //document.getElementById("greeting").innerHTML = "";
-    const dataTable = document.getElementById("data-table");
-    const city = document.createElement("h1").innerHTML = data[0].LocalizedName + " weather forcast for the next five days";
+      const dataTable = document.getElementById("data-table");
+      dataTable.innerHTML = "";
+    const city = document.createElement("h1").innerHTML = data[0].LocalizedName + " weather forecast for the next five days";
     dataTable.append(city);
       
       const weatherTable = document.createElement("table");
@@ -42,7 +43,7 @@ const currentConditions = async (zipCode) => {
       //tableHeaders.appendChild(windHeader);
       weatherTable.appendChild(tableHeaders);
       dataTable.appendChild(weatherTable);
-
+      console.log(fiveDayForecast);
       fiveDayForecast.DailyForecasts.forEach(dailyForecast => {
           let row = document.createElement("tr");
           let date = document.createElement("td");
@@ -64,6 +65,39 @@ const currentConditions = async (zipCode) => {
     console.log('error ', error);
   }
 };
+
+
+// PUT request 
+document.getElementById("json-upload").addEventListener("change", function () {
+  const importedFile = this.files[0];
+  console.log(importedFile);
+  const reader = new FileReader();
+  reader.onload = function () {
+    uploadJson(reader.result);
+  };
+  reader.readAsText(importedFile);
+}, false);
+
+const uploadJson = async (fileContent) => {
+  const url = 'https://json-store.p.rapidapi.com/';
+  const options = {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+      'X-RapidAPI-Key': '818816d76fmshec5f96e5bcd9cd6p121067jsn3e4c582a5cf7',
+      'X-RapidAPI-Host': 'json-store.p.rapidapi.com'
+    },
+    body: '{ "name": "Example", "document": ' + fileContent + ' }'
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const result = await response.text();
+    console.log(result);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 // import axios from "axios";
 
