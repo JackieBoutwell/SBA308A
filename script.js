@@ -1,27 +1,48 @@
 import { currentConditions } from "./get";
 import { uploadJson } from "./put";
 
-document.getElementById("search-btn").addEventListener("click", function () {
+//Search button click
+
+document.getElementById("search-btn").addEventListener(
+  "click",
+  function () {
     let zipCode = document.getElementById("search-input").value;
     currentConditions(zipCode);
-}, false);
+  },
+  false
+);
 
-// PUT request 
-document.getElementById("json-upload").addEventListener("change", function () {
-  const importedFile = this.files[0];
-  console.log(importedFile);
-  const reader = new FileReader();
-  reader.onload = function () {
-    uploadJson(reader.result);
-  };
-  reader.readAsText(importedFile);
-}, false);
+// File reader
+// did not want to put this jason reader file in my code but the only was i could figure out how to make it work with a put requirement.
+
+document.getElementById("json-upload").addEventListener(
+  "change",
+  function () {
+    const importedFile = this.files[0];
+    console.log(importedFile);
+    const reader = new FileReader();
+    reader.onload = function () {
+      uploadJson(reader.result);
+    };
+    reader.readAsText(importedFile);
+  },
+  false
+);
+
+
+
+// var cloudsMove = document.getElementById("myVideo");
+
+// function playVid() {
+//   cloudsMove.play();
+// }
+
+// old code from when i was thinking about doing axios...
 
 // import axios from "axios";
 
 // The get submit button element.
 // const submitBtn = document.getElemnetById("search")
-
 
 // Step 0: Store your API key here for reference and easy access.
 // const API_KEY= "A0eLxjDMQC919yA8VukwvzicrL5uZqGk";
@@ -29,8 +50,6 @@ document.getElementById("json-upload").addEventListener("change", function () {
 
 // const url = "https://api.thecatapi.com/v1/breeds";
 // axios.defaults.headers.common["x-api-key"] = API_KEY
-
-
 
 // this is coming back no errors
 
@@ -42,9 +61,8 @@ document.getElementById("json-upload").addEventListener("change", function () {
 //     const data = await response.json();
 //     console.log('location data ', data[0].Key);
 
-
 //     console.log(response.json)
-      
+
 //     const locationKey = data[0].Key;
 //     console.log(locationKey);
 
@@ -62,7 +80,7 @@ document.getElementById("json-upload").addEventListener("change", function () {
 
 // currentConditions(zip);
 
-//fetch
+//fetch code
 
 // const currentConditions = async (zipCode) => {
 //   try {
@@ -94,8 +112,6 @@ document.getElementById("json-upload").addEventListener("change", function () {
 // const zip = prompt('Whats your zipcode');
 
 // currentConditions(zip);
-
-
 
 // const currentConditions = async (zipCode) => {
 //   try {

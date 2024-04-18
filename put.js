@@ -1,3 +1,6 @@
+
+//Put function on making sure user uploads a json file... not pretty just did this to meet requirements.
+
 export const uploadJson = async (fileContent) => {
   const url = 'https://json-store.p.rapidapi.com/';
   const options = {

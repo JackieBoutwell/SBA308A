@@ -1,3 +1,5 @@
+// getting data from API need users zip code input and location. for five day forfaorcst then that is stored into a file.
+
 export const currentConditions = async (zipCode) => {
   try {
     // const headers = new Headers({
@@ -6,7 +8,7 @@ export const currentConditions = async (zipCode) => {
     const response = await fetch(
       `http://dataservice.accuweather.com/locations/v1/postalcodes/search?apikey=A0eLxjDMQC919yA8VukwvzicrL5uZqGk&q=${zipCode}`
     );
-      const data = await response.json();
+    const data = await response.json();
     const locationKey = data[0].ParentCity.Key;
 
     const fiveDayForecastResponse = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=A0eLxjDMQC919yA8VukwvzicrL5uZqGk`);
